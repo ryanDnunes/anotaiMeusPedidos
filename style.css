@@ -35,7 +35,7 @@ body {
     background-color: #f1f1f1; /* Cor de fundo do retângulo */
     border: 0.5px solid #888; /* Borda do retângulo */
     position: fixed; /* Fixa a posição do retângulo */
-    z-index: 1; /* Camada superior */
+    z-index: 10; /* Z-index superior para o painel */
     display: flex;
     flex-direction: column;
     align-items: center; /* Alinha horizontalmente ao centro */
@@ -56,7 +56,7 @@ body {
     right: 0;
     position: fixed; 
     top: 0;
-    z-index: 0;
+    z-index: 10; /* Z-index superior para o painel */
 }
 
 #abrir_carrinho{
@@ -111,7 +111,7 @@ body {
     height: 90px;
     overflow: hidden;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 10; /* Z-index superior para o painel */
 }
 
 .circle-image {
@@ -264,9 +264,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1000px;
+    height: 500%;
     background-color: rgb(232, 232, 232); /* Cor de fundo padrão */
-    z-index: 10; /* Z-index superior para o painel */
+    z-index: 9; /* Z-index superior para o painel */
     display: none; /* Oculta o painel inicialmente */
     pointer-events: auto; /* Permite interação com o painel */
 }
