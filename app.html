@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Produto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Seção Retângulo -->
+    <div class="retangulo" id="retangulo">
+        <h1 class="retangulo_nome">Nome</h1>
+        <p class="retangulo_descricao">Descrição</p>
+        <p class="retangulo_pedido_minimo">Pedido Mínimo</p>
+        <div class="categorias-container">
+            <div id="categoria1-mudar">Categoria 1</div>
+            <!-- <div id="categoria2-mudar">Categoria 2</div>-->
+            <!-- Adicione mais categorias conforme necessário -->
+        </div>
+    </div>
+
+    <!-- Seção Retângulo 2 -->
+    <div class="retangulo2" id="retangulo2">
+        <button id="abrir_carrinho" onclick="paineCarrinho()" class="fas fa-shopping-cart"></button>
+        <div class="barra-pesquisa">
+            <input type="text" id="pesquisa" placeholder="O que você quer comer hoje?">
+        </div>
+    </div>
+
+    <!-- Seção Mais Pedidos -->
+    <p class="mais_pedidos">Os mais pedidos</p>
+    <div class="circulo">
+        <img src="imgs/img_1.png" alt="Imagem Circular" class="circle-image">
+    </div>
+    <div class="mais_pedidos_img" id="mais_pedidos_img">
+        <!-- Produtos mais pedidos serão adicionados aqui -->
+    </div>
+
+    <!-- Seção Categoria -->
+    <div class="categoria1" id="categoria1">
+        
+        <table class="categoria-tabela">
+            
+            <tr>
+                
+                <td>
+                    <h1 class="nome_categoria">Nome da Categoria</h1>
+
+                    <div class="grid-container" id="categoria1_tabela" onmouseover="se_estiver_em_cima()" onmouseout="volta_ao_normal()">
+                        <div class="grid-item" id="produto1" data-nome="NOME1" data-preco="R$ 42,00" data-imagem="imgs/img_1.png" onclick="abrirPainel('produto1')">
+                            <div class="cell-content">
+                                <div class="text-content">
+                                    <p class="nome_produto">NOME1</p>
+                                    <p class="caracteristica_produto">Característica</p>
+                                    <p class="preco_produto">R$ 42,00</p>
+                                </div>
+                                <div class="img-content">
+                                    <img src="imgs/img_1.png" class="img_categoria" alt="Imagem Categoria 1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item" class="grid2-item" id="produto2" data-nome="NOME2" data-preco="R$ 20,00" data-imagem="imgs/skin.jpeg" onclick="abrirPainel('produto2')" ><!---->
+                            <div class="cell-content">
+                                <div class="text-content">
+                                    <p class="nome_produto">NOME2</p>
+                                    <p class="caracteristica_produto">Característica</p>
+                                    <p class="preco_produto">R$ 20,00</p>
+                                </div>
+                                <div class="img-content">
+                                    <img src="imgs/skin.jpeg" class="img_categoria" alt="Imagem Categoria 2">
+                                </div>
+                            </div>
+                        </div>
+                </td>
+            </tr>
+
+            <!-- Continue com mais categorias e itens conforme necessário -->
+        </table>
+    </div>
+
+
+<div id="painel"></div>
+</div>
+
+
+<div id = "dados">
+    <p>Insira seu nome:</p>
+<input type="text" id="nomeCliente" placeholder="Seu nome">
+<div class="checkbox-container">
+    <input type="checkbox" id="comerNoLocal">
+    <label for="comerNoLocal">Comer no local</label>
+</div>
+<div class="checkbox-container">
+    <input type="checkbox" id="opcao1">
+    <label for="opcao1">Endereço</label>
+</div>
+<input type="text" id="endereco" placeholder="Seu endereço">
+
+<div class="checkbox-container">
+    <input type="checkbox" id="pix">
+    <label for="pix">Pagar via pix</label>
+</div>
+<div class="checkbox-container">
+    <input type="checkbox" id="dinheiro">
+    <label for="dinheiro">pagar em dinheiro</label>
+</div>
+<p>Qual nota tem em mãos: <br> Exemplo:2,5,10,20,50,100,200</p>
+<input type="text" id="dinheiro_em_maos" placeholder="notas">
+<button type="button" id="confirmarPedido" onclick="enviarParaWhatsApp()">Confirmar Pedido</button>
+
+</div>
+
+
+<div id="painel_carrinho" style="display: none;"></div>
+
+
+
+<div id="status">
+    <span id="status-message"></span>
+    <button id="close-button">Remover aviso</button>
+</div>
+<script>
+    function horario_de_funcionamento(inicio, fim, dia_fechado) {
+        let status = document.getElementById("status");
+        let statusMessage = document.getElementById("status-message");
+        let closeButton = document.getElementById("close-button");
+        
+        // Obtém a hora atual
+        const agora = new Date();
+        const horaAtual = agora.getHours();
+        const minutoAtual = agora.getMinutes();
+        const diaAtual = agora.getDay(); // 0 = Domingo, 1 = Segunda-feira, ..., 6 = Sábado
+
+        // Função para converter o horário no formato "hh:mm" para minutos desde a meia-noite
+        function converterParaMinutos(hora) {
+            const [horas, minutos] = hora.split(':').map(Number);
+            return horas * 60 + minutos;
+        }
+
+        // Convertendo horários de início e fim para minutos
+        const inicioMinutos = converterParaMinutos(inicio);
+        const fimMinutos = converterParaMinutos(fim);
+        const horaAtualMinutos = horaAtual * 60 + minutoAtual;
+
+        // Verifica se o dia atual está fechado
+        if (dia_fechado.includes(diaAtual)) {
+            statusMessage.textContent = 'Estamos fechados no momento!';
+            status.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.4)';
+            status.style.display = 'block';
+            return;
+        }
+
+        // Verifica se a hora atual está dentro do intervalo
+        if (horaAtualMinutos >= inicioMinutos && horaAtualMinutos < fimMinutos) {
+            statusMessage.textContent = 'Estamos abertos agora!';
+            status.style.backgroundColor = '#9fffbc'; // Cor para aberto
+            status.style.borderColor = '#9fffbc'; // Cor da borda para aberto
+            status.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.4)';
+        } else {
+            statusMessage.textContent = 'Estamos fechados no momento!';
+            status.style.backgroundColor = 'red'; // Cor para fechado
+            status.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.4)';
+        }
+
+        status.style.display = 'block';
+
+        // Configura o botão de fechar
+        closeButton.addEventListener('click', () => {
+            status.style.opacity = 0; // Animação de desaparecimento
+            setTimeout(() => {
+                status.style.display = 'none'; // Esconde o status após animação
+            }, 500); // Tempo da animação
+        });
+    }
+
+    // Exemplo de uso da função com intervalo de 13:20 a 17:30 e fechamento aos domingos
+    horario_de_funcionamento('13:20', '13:30', [0]); // Domingo fechado
+</script>
+    <script src="pacote.js"></script>
+</body>
+</html>
