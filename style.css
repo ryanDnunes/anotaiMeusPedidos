@@ -260,7 +260,7 @@ body {
 
 
 #painel {
-    position: center;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -550,19 +550,3 @@ input[type="checkbox"] {
 
 
 
-/* Para telas menores */
-@media (max-width: 768px) {
-    .retangulo {
-        width: 100%; /* Faz o retângulo ocupar toda a largura da tela */
-        position: static; /* Evita a posição fixa, se necessário */
-        height: auto; /* Ajusta a altura automaticamente */
-    }
-
-    #dados {
-        margin-left: 0; /* Remove a margem esquerda */
-        width: 100%; /* Faz o painel ocupar toda a largura da tela */
-        padding: 10px; /* Ajusta o padding */
-        position: relative; /* Alterne para evitar sobreposições */
-        top: auto;
-    }
-}
