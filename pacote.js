@@ -159,12 +159,14 @@ function abrirPainel(produtoId) {
                         </div>
                     </td>
                 </tr>
+                
                 <tr>
                     <td>
                         <div class="observacoes">
                             <p>Observações:</p>
                             <textarea rows="4" placeholder="Digite suas observações aqui"></textarea>
                         </div>
+                        
                         <div class="quantidade-container">
                             <p>Quantidade:</p>
                             <div class="quantidade-controls">
@@ -243,7 +245,7 @@ function paineCarrinho() {
     div.style.backgroundColor = "#f1f1f1";
     div.style.border = "0.5px solid #888";
     div.style.position = "fixed";
-    div.style.zIndex = "1";
+    div.style.zIndex = "15";
     div.style.display = "flex";
     div.style.flexDirection = "column";
     div.style.alignItems = "center";
