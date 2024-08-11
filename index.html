@@ -119,9 +119,16 @@
 
 <div id="status">
     <span id="status-message"></span>
-    <button id="close-button">Remover aviso</button>
+    <button id="close-button" onclick="fechar_aviso()">Remover aviso</button>
 </div>
 <script>
+    function fechar_aviso(){
+        const div = document.getElementById("close-button");
+        const status = document.getElementById("status");
+        div.style.display = "none";
+        status.style.display = "none";
+
+    }
     function horario_de_funcionamento(inicio, fim, dia_fechado) {
         let status = document.getElementById("status");
         let statusMessage = document.getElementById("status-message");
