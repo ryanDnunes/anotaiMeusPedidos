@@ -260,16 +260,17 @@ body {
 
 
 #painel {
-    position: relative; /* Permite o painel ser centralizado */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute; /* Posiciona o painel em relação ao primeiro pai com position definido */
+    top: 0; /* Posiciona o painel no topo da tela */
+    left: 0; /* Posiciona o painel à esquerda */
+    width: 100%; /* Faz o painel ocupar toda a largura */
+    height: auto; /* Ajusta a altura conforme o conteúdo */
     background-color: rgb(232, 232, 232); /* Cor de fundo padrão */
     z-index: 9; /* Z-index superior para o painel */
     display: none; /* Oculta o painel inicialmente */
     pointer-events: auto; /* Permite interação com o painel */
 }
+
 
 
 #painel .fechar {
@@ -550,3 +551,48 @@ input[type="checkbox"] {
 
 
 
+@media screen and (max-width: 768px) {
+    .retangulo {
+        width: 80%; /* Ajusta a largura para 80% da tela */
+        height: auto; /* Permite que a altura seja automática */
+        left: 10%; /* Centraliza o retângulo */
+    }
+
+    .retangulo2 {
+        width: 100%;
+        height: 50px; /* Reduz a altura para telas menores */
+        right: 0;
+        top: 0;
+    }
+
+    .inteiro {
+        margin-left: 0; /* Remove a margem esquerda */
+        margin-top: 120px; /* Ajuste conforme necessário */
+        margin-right: 0;
+        padding: 10px;
+        width: 100%; /* Faz o painel ocupar toda a largura da tela */
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Uma única coluna para melhor leitura */
+    }
+
+    .grid-item {
+        height: auto; /* Permite que a altura seja automática */
+        padding: 5px;
+    }
+
+    .img_categoria {
+        width: 100%; /* Ajusta a imagem para ocupar toda a largura do grid-item */
+    }
+
+    .barra-pesquisa {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    .mais_pedidos, .mais_pedidos_img {
+        margin-left: 0; /* Remove as margens */
+        width: 100%;
+    }
+}
