@@ -260,16 +260,17 @@ body {
 
 
 #painel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 500%;
+    position: absolute; /* Posiciona o painel em relação ao primeiro pai com position definido */
+    top: 0; /* Posiciona o painel no topo da tela */
+    left: 0; /* Posiciona o painel à esquerda */
+    width: 100%; /* Faz o painel ocupar toda a largura */
+    height: auto; /* Ajusta a altura conforme o conteúdo */
     background-color: rgb(232, 232, 232); /* Cor de fundo padrão */
     z-index: 9; /* Z-index superior para o painel */
     display: none; /* Oculta o painel inicialmente */
     pointer-events: auto; /* Permite interação com o painel */
 }
+
 
 
 #painel .fechar {
