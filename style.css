@@ -30,19 +30,22 @@ body {
 }
 
 .retangulo {
-    width: 300px; /* Largura do retângulo */
-    height: 100%; /* Altura do retângulo para preencher o corpo */
-    background-color: #f1f1f1; /* Cor de fundo do retângulo */
-    border: 0.5px solid #888; /* Borda do retângulo */
-    position: fixed; /* Fixa a posição do retângulo */
-    z-index: 10; /* Z-index superior para o painel */
+    width: 300px;
+    max-width: 90%; /* Permite que o painel se ajuste em telas menores */
+    height: 100%;
+    background-color: #f1f1f1;
+    border: 0.5px solid #888;
+    position: fixed;
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinha horizontalmente ao centro */
-    justify-content: center; /* Alinha verticalmente ao centro */
-    padding: 20px; /* Espaçamento interno */
-    box-sizing: border-box; /* Inclui o padding na largura e altura */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
     top: 0px;
+    left: 8%; /* Centraliza o painel horizontalmente */
+    transform: translateX(-50%); /* Centraliza o painel */
 }
 
 
@@ -65,13 +68,13 @@ body {
     top: 20px;
 }
 .mais_pedidos {
-    margin-top: 100px; /* Ajuste conforme necessário */
-    margin-left: 310px; /* Ajuste conforme necessário */
+    margin-top: 100px;
     padding: 10px 20px;
     color: rgb(0, 0, 0);
     border-radius: 5px;
     font-size: 15px;
     font-family: 'Georgia', serif;
+    text-align: center; /* Centraliza o texto */
 }
 
 .mais_pedidos_img {
@@ -260,22 +263,24 @@ body {
 
 
 #painel {
-    position: absolute; /* Posiciona o painel em relação ao primeiro pai com position definido */
-    top: 0; /* Posiciona o painel no topo da tela */
-    left: 0; /* Posiciona o painel à esquerda */
-    width: 100%; /* Faz o painel ocupar toda a largura */
-    height: auto; /* Ajusta a altura conforme o conteúdo */
-    background-color: rgb(232, 232, 232); /* Cor de fundo padrão */
-    z-index: 9; /* Z-index superior para o painel */
-    display: none; /* Oculta o painel inicialmente */
-    pointer-events: auto; /* Permite interação com o painel */
+    position: fixed; /* Para manter o painel fixo na tela */
+    top: 0;
+    left: 50%; /* Centraliza horizontalmente */
+    width: 100%;
+    max-width: 90%; /* Ajusta a largura do painel em dispositivos móveis */
+    height: auto;
+    background-color: rgb(232, 232, 232);
+    z-index: 9;
+    display: none;
+    pointer-events: auto;
+    transform: translateX(-50%); /* Centraliza o painel */
 }
 
 
 
 #painel .fechar {
     position: absolute;
-    top: 10px;
+    top: 70px;
     right: 10px;
     background: #fff;
     border: 1px solid #000;
@@ -300,11 +305,31 @@ body {
 
 
 .inteiro {
-    margin-left: 300px; /* Adiciona margem à esquerda para alinhar ao lado direito do .retangulo */
-    margin-top: 60px; /* Ajusta a margem superior para dar espaço ao .retangulo2 */
-    margin-right: 10px; /* Adiciona alguma margem à direita se necessário */
-    padding: 10px; /* Adiciona algum espaçamento interno, se necessário */
+    margin: 60px auto 10px auto; /* Centraliza a div .inteiro e ajusta a margem superior */
+    padding: 10px;
+    max-width: 90%; /* Faz com que o conteúdo não ultrapasse a tela */
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 
 
 
@@ -551,48 +576,3 @@ input[type="checkbox"] {
 
 
 
-@media screen and (max-width: 768px) {
-    .retangulo {
-        width: 80%; /* Ajusta a largura para 80% da tela */
-        height: auto; /* Permite que a altura seja automática */
-        left: 10%; /* Centraliza o retângulo */
-    }
-
-    .retangulo2 {
-        width: 100%;
-        height: 50px; /* Reduz a altura para telas menores */
-        right: 0;
-        top: 0;
-    }
-
-    .inteiro {
-        margin-left: 0; /* Remove a margem esquerda */
-        margin-top: 120px; /* Ajuste conforme necessário */
-        margin-right: 0;
-        padding: 10px;
-        width: 100%; /* Faz o painel ocupar toda a largura da tela */
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr; /* Uma única coluna para melhor leitura */
-    }
-
-    .grid-item {
-        height: auto; /* Permite que a altura seja automática */
-        padding: 5px;
-    }
-
-    .img_categoria {
-        width: 100%; /* Ajusta a imagem para ocupar toda a largura do grid-item */
-    }
-
-    .barra-pesquisa {
-        width: 95%;
-        max-width: 100%;
-    }
-
-    .mais_pedidos, .mais_pedidos_img {
-        margin-left: 0; /* Remove as margens */
-        width: 100%;
-    }
-}
